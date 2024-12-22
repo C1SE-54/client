@@ -10,10 +10,17 @@ import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../pages/ForgotPassword/ResetPassword";
 import ForumPage from "../pages/ForumPage/ForumPage";
 import SearchPests from "../pages/SearchPests/SearchPests";
+import Login from "../pages/admin/auth/Login";
+
 export const routes = [
   {
     path: '/SearchPests',
     page: SearchPests,
+    isShowHeader: false
+  },
+  {
+    path: '/Login',
+    page: Login,
     isShowHeader: false
   },
   {
@@ -72,4 +79,5 @@ export const routes = [
     path: '*',
     page: NotFoundPage
   }
+
 ]

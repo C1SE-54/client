@@ -1,0 +1,33 @@
+.main-container{
+	padding-bottom: 0;
+}
+section{
+	background-color: #1f1d2b;
+	overflow: hidden;
+}
+.card-body{
+	background-color: #1f1d2b;
+}
+.card-body .row{
+	line-height: 30px;
+}
+.mb-4{
+	border: none;
+	color: white;
+}
+.col-sm-9 input{
+	color: white;
+	margin-top: 0rem !important;
+}
+.text-muted{
+	background-color: #1f1d2b;
+	border: none;
+	outline: none;
+}
+.btn-updateprofile{
+	margin-top: 1.5rem;
+	display: flex;
+}
+.btn-updateprofile .btn-primary{
+	margin-right: 0.5rem;
+}
