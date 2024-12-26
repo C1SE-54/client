@@ -4,16 +4,21 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Giới thiệu</title>
 <link rel="stylesheet" href="views/css/style.css">
 
 </head>
+<style>
+    .destination__card a{
+        text-decoration: none;
+    }
+</style>
 <body>
  <header>
         <div class="section__container header__container">
             <div class="header__image">
-                <img src="views/images/hd-1.png" />
-                <img src="views/images/hd-2.jpg" />
+                <img src="views/images/index1.jpg" />
+                <img src="views/images/index2.jpg" />
             </div>
             <div class="header__content">
                 <div>
@@ -53,27 +58,27 @@
             </p>
             <div class="destination__grid">
                 <div class="destination__card">
-                    <img src="views/images/product/clothes.jpg" alt="destination" />
-                    <div class="destination__details">
-                        <p class="destination__subtitle">Cây trồng</p>
+                    <img src="views/images/product/caytrong.jpg" alt="destination" />
+                    <div class="destination__details" >
+                        <a href="http://localhost:8080/index/content" style="color: white" ><p class="destination__subtitle">Cây trồng</p></a>
                     </div>
                 </div>
                 <div class="destination__card">
-                    <img src="views/images/product/tech.jpg" alt="destination" />
+                    <img src="views/images/product/thietbinongnghiep.jpg" alt="destination" />
                     <div class="destination__details">
-                        <p class="destination__subtitle">Thiết bị nông nghiêp</p>
+                       <a href="#" style="color: white"> <p class="destination__subtitle">Thiết bị nông nghiêp</p></a>
                     </div>
                 </div>
                 <div class="destination__card">
-                    <img src="views/images/product/book.jpg" alt="destination" />
+                    <img src="views/images/product/saubenh.jpg" alt="destination" />
                     <div class="destination__details">
-                        <p class="destination__subtitle">Sâu bệnh</p>
+                        <a href="#" style="color: white"> <p class="destination__subtitle">Sâu bệnh</p></a>
                     </div>
                 </div>
                 <div class="destination__card">
-                    <img src="views/images/product/houseware.jpg" alt="destination" />
+                    <img src="views/images/product/meovakynang.jpg" alt="destination" />
                     <div class="destination__details">
-                        <p class="destination__subtitle">Kinh nghiệm và mẹo</p>
+                        <a href="#" style="color: white"> <p class="destination__subtitle">Kinh nghiệm và mẹo</p></a>
                     </div>
                 </div>
             </div>
@@ -83,11 +88,11 @@
         <div class="section__container reason__container">
             <div class="image__reason">
                 <div class="reason__col">
-                    <img src="views/images/hd-1.png" alt="reason" />
+                    <img src="views/images/index1.jpg" alt="reason" />
                 </div>
                 <div class="reason__col">
-                    <img src="views/images/gallery-2.jpg" alt="reason" />
-                    <img src="views/images/hd-2.jpg" alt="reason" />
+                    <img src="views/images/th.jpg" alt="reason" />
+                    <img src="views/images/index2.jpg" alt="reason" />
                 </div>
             </div>
             <div class="reason__content">

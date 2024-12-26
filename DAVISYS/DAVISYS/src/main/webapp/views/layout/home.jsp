@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Trang chủ</title>
 <!-- <link rel="stylesheet" href="views/css/home.css">
 <link rel="stylesheet" href="views/css/profile.css">-->
 

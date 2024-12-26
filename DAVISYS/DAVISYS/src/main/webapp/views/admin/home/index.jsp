@@ -152,7 +152,7 @@
 					<!-- Card Header - Dropdown -->
 					<div
 						class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary">Top 3 sản phẩm được tặng nhiều nhất (%)</h6>
+						<h6 class="m-0 font-weight-bold text-primary">Top 3 bài đăng được bình luận nhiều nhất (%)</h6>
 						<div class="dropdown no-arrow">
 							<a class="dropdown-toggle" href="#" role="button"
 								id="dropdownMenuLink" data-toggle="dropdown"

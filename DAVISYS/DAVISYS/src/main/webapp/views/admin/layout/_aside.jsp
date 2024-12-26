@@ -60,13 +60,42 @@
         width: 90px;
         border-right: 1px solid var(--border-color);
     }
+    label a {
+        font-family: 'Poppins', sans-serif; /* Chọn font hiện đại */
+        font-size: 18px; /* Kích thước chữ */
+        font-weight: bold; /* Đậm chữ */
+        text-transform: uppercase; /* Chữ in hoa */
+        text-decoration: none; /* Bỏ gạch chân mặc định */
+        color: #4CAF50; /* Màu xanh lá cây nhạt */
+        transition: all 0.3s ease; /* Hiệu ứng mượt */
+        position: relative;
+    }
+
+    label a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4CAF50, #81C784); /* Hiệu ứng gradient gạch chân */
+        transition: width 0.3s ease;
+    }
+
+    label a:hover::before {
+        width: 100%; /* Gạch chân xuất hiện khi hover */
+    }
+
+    label a:hover {
+        color: #388E3C; /* Đổi màu khi hover */
+        transform: scale(1.1); /* Phóng to nhẹ */
+    }
+
 </style>
 <div class="sidebar">
-    <img src="/views/images/LogoDasido.png" alt="" class="logo">
-    <a class="logo-expand" href="#">
-        <img src="/views/images/LogoDasido.png" alt="" class="logo-expand-img">
-    </a>
-
+    <label>
+        <a href="#">DASHBOARD</a>
+    </label>
     <div class="side-wrapper">
         <div class="side-title"></div>
         <div class="side-menu">

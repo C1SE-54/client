@@ -106,8 +106,8 @@ public class Run {
 		if (emailForgot == null) {
 			model.addAttribute("messageForgot", "Email không tồn tại!");
 		} else {
-			String username = "dasido.2hand.davisy@gmail.com";
-			String password = "qhgpqcfcxpuhsdep";
+			String username = "tk020803@gmail.com";
+			String password = "cpfhyvvrctxzmsik";
 
 			Properties prop = new Properties();
 			prop.put("mail.smtp.host", "smtp.gmail.com");

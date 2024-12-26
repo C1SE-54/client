@@ -6,8 +6,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Đăng kí</title>
 <link rel="stylesheet" href="views/css/signup.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <script src="https://kit.fontawesome.com/152112956f.js" crossorigin="anonymous"></script>
 <style type="text/css">
 body {
@@ -171,7 +173,7 @@ border-radius: 100px;
     color: #555;
 }
 
-.loginhere {
+.login {
     color: #555;
     font-weight: 500;
     text-align: center;
@@ -230,6 +232,14 @@ border-radius: 100px;
     text-decoration: none;
     border: none;
 }
+.method-control {
+    margin-bottom: 1rem;
+
+}
+.method-control a{
+    text-decoration: none;
+    border: none;
+}
 .method-action {
     font-family: inherit;
     font-size: 0.95rem;
@@ -238,7 +248,7 @@ border-radius: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     height: auto;
     padding: 1rem 1.25rem;
     outline: none;
@@ -314,7 +324,7 @@ border-radius: 100px;
                             <span>${messageemail}</span>
                             </div>
                             <div class="form-group">
-                                <fr:input type="text" path="password" class="form-input" name="password" id="password" placeholder="Mật khẩu"/>
+                                <fr:input type="password" path="password" class="form-input" name="password" id="password" placeholder="Mật khẩu"/>
                                <fr:errors path="password"></fr:errors>
                                 <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                             </div>
@@ -334,13 +344,14 @@ border-radius: 100px;
                         </div>
                         <div class="method">
                             <div class="method-control">
-                                <a href="#" class="method-action">
-                                    <i class="fa-brands fa-google"></i>
-                                    <span>Đăng nhập với Google</span>
-                                </a>
+                                <div id="g_id_onload"
+                                     data-client_id="201406685721-tare83nq3f9vk784crjh80aecglmrbed.apps.googleusercontent.com"
+                                     data-ux_mode="redirect"
+                                     data-callback="handleCredentialResponse" data-login_uri="/home"></div>
+                                <div class="g_id_signin" data-type="standard"></div>
                             </div>
                         </div>
-                        <p class="loginhere">
+                        <p class="login">
                         Bạn đã có tài khoản? <a href="log" class="loginhere-link">Đăng nhập</a>
                         </p>
                     </div>

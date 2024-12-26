@@ -3,6 +3,7 @@ package com.davisy.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -66,7 +67,7 @@ public class ConnectDtbController {
 		List<User> users = udao.findAll();
 		model.addAttribute("users", users);
 	
-		List<Post> posts = pdao.findAll();
+		List<Post> posts = pdao.findAll(Sort.by(Sort.Direction.DESC,"date_Post"));
 		model.addAttribute("posts", posts);
 		
 		List<Follower> fls = fdao.findAll();

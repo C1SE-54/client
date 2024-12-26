@@ -18,6 +18,9 @@ public interface PostDao extends JpaRepository<Post, Integer> {
 	@Query(value = "SELECT * FROM POST  WHERE userId= :id1", nativeQuery = true)
 	public List<Post> findByListPostById(int id1);
 
+	@Query("select p from Post p order by p.ID desc ")
+	List<Post> fillAllPost();
+
 	@Query(value = "SELECT p.id, p.link_image, u.fullname, COUNT(i.postID) AS interestedCount "
 			+ "FROM POST p INNER JOIN INTERESTED i ON p.ID = i.postID "
 			+ "INNER JOIN USERS u ON p.userid = u.id GROUP BY p.id, p.link_image, u.fullname "

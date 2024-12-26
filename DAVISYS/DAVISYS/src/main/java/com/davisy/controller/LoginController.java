@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -185,7 +186,8 @@ public class LoginController {
 			return "error";
 		}
 		try {
-			List<Post> posts = pdao.findAll();
+//			List<Post> posts = pdao.findAll(Sort.by(Sort.Direction.DESC,"date_Post"));
+			List<Post> posts = pdao.fillAllPost();
 			List<PostEntity> postEntity = new ArrayList<>();
 			List<Comment> comments = commentDao.findAll();
 			List<CommentEntity> commentEntity = new ArrayList<>();

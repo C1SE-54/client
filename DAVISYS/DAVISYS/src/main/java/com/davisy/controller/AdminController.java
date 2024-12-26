@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -88,6 +89,7 @@ public class AdminController {
 	public void loadPosts(Model model) {
 		try {
 			List<Post> posts = postDao.findAll();
+//			List<Post> posts = postDao.fillAllPost();
 			List<PostEntity> postEntity = new ArrayList<>();
 			for (Post p : posts) {
 				List<String> images = new ArrayList<>();

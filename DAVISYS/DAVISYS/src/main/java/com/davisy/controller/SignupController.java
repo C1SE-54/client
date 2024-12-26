@@ -88,8 +88,8 @@ public class SignupController {
 			if (!pass.equals(repass)) {
 				m.addAttribute("message", "Mật khẩu xác nhận chưa trùng khớp!");
 			} else {
-				String username = "dasido.2hand.davisy@gmail.com";
-				String password = "qhgpqcfcxpuhsdep";
+				String username = "tk020803@gmail.com";
+				String password = "cpfhyvvrctxzmsik";
 
 				Properties prop = new Properties();
 				prop.put("mail.smtp.host", "smtp.gmail.com");

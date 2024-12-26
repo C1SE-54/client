@@ -43,8 +43,8 @@ public class ContactController {
 		String email = request.getParameter("email");
 		String subject = request.getParameter("subject");
 		String messages = request.getParameter("message");
-		String username = "dasido.2hand.davisy@gmail.com";
-		String password = "qhgpqcfcxpuhsdep";
+		String username = "tk020803@gmail.com";
+		String password = "cpfhyvvrctxzmsik";
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -61,7 +61,7 @@ public class ContactController {
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("dasido.2hand.davisy@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 			message.setSubject(subject);
 			message.setText("Họ và tên: "+name+"   Email:  "+email+"  Nội dung: "+messages);
 			Transport.send(message);

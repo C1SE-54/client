@@ -1,4 +1,5 @@
 let repCommentId = null;
+
 function comment(idPost) {
 	let comment = document.getElementById('comment-input' + idPost).value;
 /*	$.get("/PostComment/" + idPost,function(response){
@@ -16,8 +17,8 @@ function comment(idPost) {
 		success: function(data) {
 			//alert(data);
 			repCommentId = null;
-			//window.location.href = "/main";
-			
+			 window.location.href = "/main";
+
 
 		},
 		error: function(xhr) {

@@ -1,9 +1,7 @@
 package com.davisy.controller;
 
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,7 +42,7 @@ public class CommentController {
 
 	@GetMapping("/PostComment/{idPost}")
 	public String comment(@PathVariable String idPost, @RequestParam("commentContent") String comment,
-			@RequestParam("repCommentIdUser") String replyComment) {
+			@RequestParam("repCommentIdUser") String replyComment,Model model) {
 		User userSession = sessionService.get("user");
 		if(userSession == null) {
 			return "error";
@@ -68,14 +66,24 @@ public class CommentController {
 
 			}
 			commentDao.save(cm);
+			List<Comment> comments = commentDao.findAllByPostId(id);
+			int uniqueCommenters = countUniqueCommenters(comments);
+			model.addAttribute("uniqueUsers", uniqueCommenters);
+			System.out.println("Unique commenters: " + uniqueCommenters);
 			return "jsp/main";
 		} catch (Exception e) {
 			System.out.println("error: " + e);
 			throw e;
 		}
-
 	}
 
+	private int countUniqueCommenters(List<Comment> comments) {
+		Set<Integer> uniqueUsers = new HashSet<>();
+		for (Comment comment : comments) {
+			uniqueUsers.add(comment.getUser().getID());
+		}
+		return uniqueUsers.size();
+	}
 	@GetMapping("/loadReplyComment")
 	public void loadReplyComment(@RequestParam("idComment") String idComment) {
 		

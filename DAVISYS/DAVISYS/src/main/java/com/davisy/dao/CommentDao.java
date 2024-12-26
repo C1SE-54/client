@@ -14,4 +14,6 @@ public interface CommentDao extends JpaRepository<Comment, Integer> {
 	@Query(value = "SELECT *FROM COMMENT WHERE ID =:id", nativeQuery = true)
 	public Comment findByIdComment(int id);
 
+	@Query(value = "select *from COMMENT where postID =:id",nativeQuery = true)
+	public List<Comment> findAllByPostId(int id);
 }

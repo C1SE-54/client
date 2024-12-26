@@ -224,6 +224,10 @@ header {
 }
 
 .destination__card img {
+    width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của thẻ */
+    height: 100%; /* Đảm bảo ảnh lấp đầy chiều cao thẻ */
+    object-fit: cover; /* Cắt ảnh để phù hợp với khung */
+    aspect-ratio: 5 / 6; /* Đặt tỷ lệ khung hình là 500x600 */
     border-radius: 1rem;
 }
 
@@ -242,7 +246,10 @@ header {
     z-index: 1;
     transition: 0.3s;
 }
+.destination__details a{
+    text-decoration: none;
 
+}
 .destination__card:hover .destination__details {
     bottom: 1rem;
 }

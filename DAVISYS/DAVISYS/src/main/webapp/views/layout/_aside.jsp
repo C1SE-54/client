@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title></title>
 <link rel="stylesheet" href="/views/css/dialog.css">
 <script src="/views/js/jquery.min.js"></script>
 <script src="/views/js/bootstrap.min.js"></script>

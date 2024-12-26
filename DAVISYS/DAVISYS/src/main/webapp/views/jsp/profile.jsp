@@ -164,6 +164,14 @@
 																</button>
 															</div>
 														</form>
+<%--														<c:set var="uniqueUsers" value="${empty uniqueUsers ? new java.util.HashSet() : uniqueUsers}" />--%>
+<%--														<c:forEach items="${comments}" var="comment">--%>
+<%--															<c:set var="userId" value="${comment.comment.user.ID}" />--%>
+<%--															<c:if test="${!uniqueUsers.contains(userId)}">--%>
+<%--																<c:set var="uniqueUsers" value="${uniqueUsers.add(userId) ? uniqueUsers : uniqueUsers}" />--%>
+<%--															</c:if>--%>
+<%--														</c:forEach>--%>
+<%--														<span class="comment-count">${uniqueUsers.size()} người đã bình luận</span>--%>
 														<span class="comment-count">50 bình luận</span>
 													</div>
 												</div>
