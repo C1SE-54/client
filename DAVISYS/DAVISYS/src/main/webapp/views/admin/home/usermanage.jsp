@@ -42,23 +42,23 @@
 						<div class="tab-content" id="nav-tabContent">
 							<section  class="tab-pane fade show ${active1}" id="nav-home"
                         role="tabpanel" aria-labelledby="nav-home-tab">
-								<h2>Tài khoản</h2>
+								<h2 style="color: #dddddd">Tài khoản</h2>
 								<table class="rwd-table">
 									<thead>
 										<tr>
 											<th>Ảnh</th>
 											<th>Họ và tên</th>
-											<th>Điểm</th>
-											<th></th>
+<%--											<th>Điểm</th>--%>
+											<th>Xem chi tiết</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${users}" var="user">
 											<tr>
-												<td data-th="Tên"><img src="/${user.avatar}"
+												<td data-th="Tên"><img src="${user.avatar}"
 													class="thumb" width="50px" /></td>
 												<td data-th="Điểm">${user.fullname}</td>
-												<td>${user.mark}</td>
+<%--												<td>${user.mark}</td>--%>
 												<td><a href="/edit/${user.username}">Xem</a></td>
 											</tr>
 										</c:forEach>
@@ -67,9 +67,10 @@
 							</section>
 							<section class="tab-pane fade ${active2}" id="nav-profile" role="tabpanel"
                         aria-labelledby="nav-profile-tab">
-								<form>
-									<p>${messageban}</p>
-									<div class="form-row">
+								<form style="color: #ddd;">
+									<p style="color: #dddddd">${messageban}</p>
+									<div class="form-row" style="color: #dddddd;">
+<%--								<p style="color: #dddddd">Thông tin chi tiết người dùng</p>--%>
 										<div class="form-group col-md-6">
 											<label for="inputEmail4">Tên đăng nhập</label> <input
 												type="email" name="username" value="${Users .username}"
@@ -105,10 +106,10 @@
 											<label for="inputCity">Giới tính</label> <input type="text"
 												value="${Users .gender}" class="form-control" id="" readonly>
 										</div>
-										<div class="form-group col-md-2">
-											<label for="inputZip">Điểm</label> <input type="text"
-												value="${Users .mark}" class="form-control" id="" readonly>
-										</div>
+<%--										<div class="form-group col-md-2">--%>
+<%--											<label for="inputZip">Điểm</label> <input type="text"--%>
+<%--												value="${Users .mark}" class="form-control" id="" readonly hidden="hidden">--%>
+<%--										</div>--%>
 										<div class="form-group col-md-2">
 											<label for="inputZip">Báo cáo</label> <input type="text"
 												value="${Users .ban}" class="form-control" id="" readonly>
@@ -116,10 +117,10 @@
 									</div>
 									<div class="row">
 										<div class="col-md-3"> 
-										<button type="submit" formaction="/ban" class="btn btn-danger">Vô
+										<button type="submit" style="align-items: center; padding-right: 170px" formaction="/ban" class="btn btn-danger">Vô
 											hiệu hóa tài khoản</button></div> 
 											<div class="col-md-3"> 
-										<button type="submit" formaction="/onban"
+										<button style="margin-left: 50px" type="submit" formaction="/onban"
 											class="btn btn-success">Mở tài khoản</button>
 										 </div> 
 									</div>

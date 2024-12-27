@@ -17,7 +17,6 @@
 			</div>
 			<h2>Bạn chưa đăng nhập! </h2>
 			<p>Vui lòng đăng nhập để được vào diễn đàn!</p>
-            <!-- <p>DASIDO rất xin lỗi về sự bất tiện này.</p> -->
 			<a href="index">Trang chủ</a>
 		</div>
 	</div>
