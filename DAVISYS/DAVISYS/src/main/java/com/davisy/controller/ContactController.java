@@ -66,6 +66,7 @@ public class ContactController {
 			message.setText("Họ và tên: "+name+"   Email:  "+email+"  Nội dung: "+messages);
 			Transport.send(message);
 			System.out.println("Done");
+			request.setAttribute("alert", "Gửi thông tin thành công!");
 			return "redirect:/main";
 		} catch (MessagingException e) {
 			System.out.println("Fail");

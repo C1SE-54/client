@@ -56,10 +56,11 @@
 				</div>
 				<div class="messages-chat"></div>
 				<div class="footer-chat">
-					<i class="icon fa fa-smile-o clickable" style="font-size: 25pt;"
-						aria-hidden="true"></i> <input type="text" class="write-message"
-						placeholder="Type your message here" name="message-to-send"
-						id="message-to-send"></input> 
+					<input type="file" id="image-input" accept="image/*" style="font-size: 25pt; display: none;" onchange="previewImage(event)">
+					<label for="image-input" style="font-size: 25pt; cursor: pointer;">
+						<i class="fa fa-image" aria-hidden="true"></i>
+					</label>
+					<input type="text" class="write-message" placeholder="Nhập tin nhắn tại đây" name="message-to-send" id="message-to-send">
 						<!-- <i id="sendBtn"
 						class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"></i> -->
 				</div>

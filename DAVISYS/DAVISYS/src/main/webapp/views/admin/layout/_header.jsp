@@ -11,16 +11,19 @@
 </head>
 <body>
 <div class="header bg">
+	<form action="/main" method="get">
 		<div class="search-bar">
+			<input hidden="hidden" name="" value="">
 			<input type="text" placeholder="Search">
 		</div>
+	</form>
 		<div class="user-settings">
 			<%-- <c:if test="${sessionScope.user==null}">
 				<img alt="" src="/views/images/user/user.jpg">
 			</c:if> --%>
-			<c:if test="${sessionScope.user!=null}">
-				<img class="user-img" src="/${sessionScope.user.avatar }" alt="">
-			</c:if>
+				<c:if test="${sessionScope.user!=null}">
+					<img class="user-img" src="${sessionScope.user.avatar}" alt="">
+				</c:if>
 
 			<div class="user-name">
 				<c:if test="${sessionScope.user==null}">

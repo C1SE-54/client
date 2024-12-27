@@ -3,9 +3,13 @@ package com.davisy.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.davisy.entity.User;
+import org.springframework.data.repository.query.Param;
+
+import javax.transaction.Transactional;
 
 public interface UserDao extends JpaRepository<User, String> {
 
@@ -26,6 +30,8 @@ public interface UserDao extends JpaRepository<User, String> {
 	
 	@Query(value = "SELECT COUNT(USERS.ID) FROM USERS WHERE MONTH(USERS.DAYCREATE) =:id", nativeQuery = true)
 	public int totalUserMonth(int id);
+
+
 	
 	
 }

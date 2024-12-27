@@ -60,28 +60,37 @@
                 <div class="destination__card">
                     <img src="views/images/product/caytrong.jpg" alt="destination" />
                     <div class="destination__details" >
-                        <a href="http://localhost:8080/index/content" style="color: white" ><p class="destination__subtitle">Cây trồng</p></a>
+                        <a href="http://localhost:8080/index/caytrong" style="color: white">
+                            <p class="destination__subtitle">Cây trồng</p>
+                        </a>
                     </div>
                 </div>
                 <div class="destination__card">
                     <img src="views/images/product/thietbinongnghiep.jpg" alt="destination" />
                     <div class="destination__details">
-                       <a href="#" style="color: white"> <p class="destination__subtitle">Thiết bị nông nghiêp</p></a>
+                        <a href="http://localhost:8080/index/thietbinongnghiep" style="color: white">
+                            <p class="destination__subtitle">Thiết bị nông nghiệp</p>
+                        </a>
                     </div>
                 </div>
                 <div class="destination__card">
                     <img src="views/images/product/saubenh.jpg" alt="destination" />
                     <div class="destination__details">
-                        <a href="#" style="color: white"> <p class="destination__subtitle">Sâu bệnh</p></a>
+                        <a href="http://localhost:8080/index/saubenh" style="color: white">
+                            <p class="destination__subtitle">Sâu bệnh</p>
+                        </a>
                     </div>
                 </div>
                 <div class="destination__card">
                     <img src="views/images/product/meovakynang.jpg" alt="destination" />
                     <div class="destination__details">
-                        <a href="#" style="color: white"> <p class="destination__subtitle">Kinh nghiệm và mẹo</p></a>
+                        <a href="http://localhost:8080/index/kinhnghiemvameo" style="color: white">
+                            <p class="destination__subtitle">Kinh nghiệm và mẹo</p>
+                        </a>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     <section class="reason">

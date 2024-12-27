@@ -157,7 +157,7 @@
 														<form>
 															<div class="comment-box">
 																<input type="text" id="comment-input${posts.post.ID}"
-																	name="postComment" placeholder="Bình luận">
+																	name="postComment" placeholder="Bình luận" required>
 																<button class="add-comment-btn"
 																	onclick="comment('${posts.post.ID }')">
 																	<i class="fa-regular fa-comment"></i>

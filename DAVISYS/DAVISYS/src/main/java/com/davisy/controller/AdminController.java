@@ -3,14 +3,15 @@ package com.davisy.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.davisy.dao.PostDao;
 import com.davisy.dao.UserDao;
@@ -18,6 +19,8 @@ import com.davisy.entity.Post;
 import com.davisy.entity.PostEntity;
 import com.davisy.entity.User;
 import com.davisy.service.SessionService;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -72,6 +75,42 @@ public class AdminController {
 		loadReportUsers(model);
 		return "admin/home/report";
 	}
+	@RequestMapping(value = "/admin/report/deletePost/{id}", method = RequestMethod.POST)
+	public String deletePost(@PathVariable("id") Integer id) {
+		try {
+
+				postDao.deletePostById(id); // Xóa bài đăng
+			return "redirect:/admin/report";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+	}
+//	@RequestMapping(value = "/admin/report/delete/{id}", method = RequestMethod.POST)
+//	public String deletePost(@PathVariable("id") Integer id, HttpServletRequest request) {
+//		try {
+//			// Xóa người dùng
+//			postDao.deleteUserById(id);
+//
+//			// Kiểm tra xem người dùng có đang đăng nhập không, nếu có thì logout
+//			if (request.getSession(false) != null) {
+//				request.getSession().invalidate();  // Hủy session hiện tại
+//				return "redirect:/login";  // Chuyển hướng về trang login
+//			}
+//
+//			return "redirect:/admin/report";  // Nếu không có session, chuyển hướng đến trang quản lý
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return "error";
+//		}
+//	}
+
+
+
+
+
+
+
 	@GetMapping("/admin/usermanage")
 	public String adminpageUserManage(Model model) {
 		User userSession = sessionService.get("user");
@@ -172,5 +211,6 @@ public class AdminController {
 		model.addAttribute("top2P", top2P);
 		model.addAttribute("top3P", top3P);
 	}
+
 	
 }

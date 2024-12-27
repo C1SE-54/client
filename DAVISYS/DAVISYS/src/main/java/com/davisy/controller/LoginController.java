@@ -138,7 +138,7 @@ public class LoginController {
 		}
 		else {
 			if (!user.getPassword().equals(password)) {
-				model.addAttribute("message", "Tên đăng nhập hoạc mật khẩu không đúng!");
+				model.addAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng!");
 
 			} else {
 				sessionService.set("user", user);
@@ -153,7 +153,7 @@ public class LoginController {
 				sessionService.set("follower", users);
 				List<User> listSuggestedFriend = userdao.findAllByIdUser(userSession.getID());
 				
-				loadPost(model);
+				loadPost(null,model);
 				
 				List<User> listFriends = new ArrayList<>();
 				for (int i = 0; i < 4; i++) {
@@ -180,14 +180,21 @@ public class LoginController {
 	}
 	
 	@GetMapping("/main")
-	public String loadPost(Model model) {
+	public String loadPost(@RequestParam(value = "keyword", required = false) String keyword,Model model) {
 		User userSession = sessionService.get("user");
 		if(userSession == null) {
 			return "error";
 		}
 		try {
+			List<Post> posts;
+//			List<Post> posts = pdao.fillAllPost();
+			if (keyword != null && !keyword.isEmpty()){
+				posts = pdao.findByPostContent(keyword);
+				System.out.println();
+			}else {
+				posts = pdao.fillAllPost();
+			}
 //			List<Post> posts = pdao.findAll(Sort.by(Sort.Direction.DESC,"date_Post"));
-			List<Post> posts = pdao.fillAllPost();
 			List<PostEntity> postEntity = new ArrayList<>();
 			List<Comment> comments = commentDao.findAll();
 			List<CommentEntity> commentEntity = new ArrayList<>();
@@ -209,6 +216,7 @@ public class LoginController {
 			}
 			model.addAttribute("posts", postEntity);
 			model.addAttribute("comments", commentEntity);
+			model.addAttribute("keyword", keyword);
 			System.out.println("cmt: "+commentEntity.size());
 		} catch (Exception e) {
 			System.out.println("Error loadPost: " + e);

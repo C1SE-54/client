@@ -11,3 +11,17 @@ close_mess.addEventListener("click", () => {
     container_message.classList.remove("active");
     messageNull.style.display = 'block';
 });
+function previewImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            // Hiển thị ảnh đã chọn
+            const imagePreview = document.createElement('img');
+            imagePreview.src = reader.result;
+            imagePreview.style.width = '100px'; // Bạn có thể điều chỉnh kích thước
+            document.querySelector('.footer-chat').appendChild(imagePreview);
+        };
+        reader.readAsDataURL(file);
+    }
+}

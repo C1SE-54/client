@@ -3,6 +3,7 @@ let stompClient = null;
 let selectedUser = null;
 let newMessages = new Map();
 let image = null;
+// let count =1;
 function connectToChat(userName) {
 	console.log("connecting to chat...")
 	console.log("Username: " + userName)
@@ -17,7 +18,18 @@ function connectToChat(userName) {
 				render(data.message, data.fromLogin, data.img);
 			} else {
 				newMessages.set(data.fromLogin, data.message, data.img);
-				$('#userNameAppender_' + data.fromLogin).append('<span class="countMesages" id="newMessage_' + data.fromLogin + '">+1</span>');
+				const spanId = `newMessage_${data.fromLogin}`; // Định danh duy nhất cho thẻ <span>
+// 				let count = newMessages.get(data.fromLogin) ? newMessages.get(data.fromLogin).unreadCount : 0;
+// // Kiểm tra xem thẻ <span> đã tồn tại hay chưa
+// 				if ($(`#${spanId}`).length) {
+// 					$(`#${spanId}`).text(count);
+// 				} else {
+// 					// Nếu chưa tồn tại, thêm mới
+// 					$(`#userNameAppender_${data.fromLogin}`).append(
+// 						`<span class="countMessages" id="${spanId}">${count}</span>`
+// 					);
+// 				}
+				 $('#userNameAppender_' + data.fromLogin).append(`<span class="countMesages" id="newMessage_${data.fromLogin} " >1</span>`);
 			}
 		});
 
@@ -26,34 +38,75 @@ function connectToChat(userName) {
 			let data = JSON.parse(response.body);
 			let usersTemplateHTML = "";
 			let username = $('#userName').val();
+
 			for (let key of Object.keys(data)) {
 				let online = "";
 				let timeOff = "";
 				let count = "";
 				let value = data[key];
-				if (key != username) {
+
+				// Kiểm tra nếu người dùng khác với người đang đăng nhập
+				if (key !== username) {
 					if (value.type === 'JOIN') {
 						online = '<div class="online"></div>';
 					} else if (value.messageUnRead > 0) {
-						count = value.messageUnRead;
-					}
-					else {
+						count = value.messageUnRead;  // Số tin nhắn chưa đọc
+					} else {
 						timeOff = '<div class="timer">12 sec</div>';
 					}
-					usersTemplateHTML = usersTemplateHTML + '<a href="#"  onclick="selectUser(\'' + key + '\')"><div class="discussion">' +
+
+					// Cập nhật tin nhắn cuối cùng và số lượng tin nhắn chưa đọc
+					usersTemplateHTML += '<a href="#" onclick="selectUser(\'' + key + '\')"><div class="discussion">' +
 						'<div class="photo"  id="userNameAppenderImg_' + key +
 						'" style="background-image: url(' + value.image + ');">' + online +
 						'</div>' +
 						'<div class="desc-contact">' +
-						'<p id="userNameAppender_' + key + '" class="name">' + value.fullName + '<span class="countMesages badge">' + "+99" + '</span>' + '</p>' +
-						'<p class="message">' + value.lastMessage + '</p>' +
+						'<p id="userNameAppender_' + key + '" class="name">' + value.fullName +
+						// Hiển thị số lượng tin nhắn chưa đọc, chỉ hiển thị nếu có tin nhắn chưa đọc
+						'<span class="countMessages badge">' + count++ + '</span>' + '</p>' +
+						// Hiển thị tin nhắn cuối cùng, nếu không có thì hiển thị "No message"
+						'<p class="message">' + (value.lastMessage || 'No message') + '</p>' +
 						'</div>' + timeOff +
 						'</div></a>';
 				}
-
 			}
+			// Cập nhật giao diện với danh sách người dùng
 			$('#usersList').html(usersTemplateHTML);
 		});
+		// stompClient.subscribe("/topic/public", function(response) {
+		// 	let data = JSON.parse(response.body);
+		// 	let usersTemplateHTML = "";
+		// 	let username = $('#userName').val();
+		// 	for (let key of Object.keys(data)) {
+		// 		let online = "";
+		// 		let timeOff = "";
+		// 		let count = "";
+		// 		let value = data[key];
+		// 		if (key != username) {
+		// 			if (value.type === 'JOIN') {
+		// 				online = '<div class="online"></div>';
+		// 			} else if (value.messageUnRead > 0) {
+		// 				count = value.messageUnRead;  // Số tin nhắn chưa đọc
+		// 			} else {
+		// 				timeOff = '<div class="timer">12 sec</div>';
+		// 			}
+		// 			// Cập nhật hiển thị số tin nhắn chưa đọc
+		// 			usersTemplateHTML = usersTemplateHTML + '<a href="#" onclick="selectUser(\'' + key + '\')"><div class="discussion">' +
+		// 				'<div class="photo" id="userNameAppenderImg_' + key +
+		// 				'" style="background-image: url(' + value.image + ');">' + online +
+		// 				'</div>' +
+		// 				'<div class="desc-contact">' +
+		// 				'<p id="userNameAppender_' + key + '" class="name">' + value.fullName +
+		// 				// Thay thế phần số tin nhắn chưa đọc
+		// 				'<span class="countMesages badge">' + (count > 0 ? count : '') + '</span>' + '</p>' +
+		// 				'<p class="message">' + value.lastMessage + '</p>' +
+		// 				'</div>' + timeOff +
+		// 				'</div></a>';
+		// 		}
+		// 	}
+		// 	$('#usersList').html(usersTemplateHTML);
+		// });
+
 		stompClient.send("/app/fetchAllUsers");
 
 	});
