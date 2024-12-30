@@ -17,7 +17,7 @@
 			</div>
 			<h2>KHÔNG TÌM THẤY TRANG</h2>
 			<p>Trang bạn đang tìm kiếm có thể đã bị xóa do đổi tên hoặc tạm thời không có.</p>
-            <p>AGRIGENIUS rất xin lỗi về sự bất tiện này.</p>
+            <p>AGRIADVISOR rất xin lỗi về sự bất tiện này.</p>
 			<a href="index">Trang chủ</a>
 		</div>
 	</div>

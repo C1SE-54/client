@@ -33,7 +33,7 @@ function render(message, userName, img) {
 	};
 
 
-	setTimeout(function() {
+	setTimeout(function () {
 		$chatHistory.append(templateResponse(contextResponse));
 		scrollToBottom();
 	}.bind(this), 1500);
@@ -53,6 +53,9 @@ function sendMessage(message) {
 			toUserName: selectedUser
 		};
 		/*	insertData(username,message);*/
+		console.log($chatHistory);
+		console.log(template(context));
+
 
 		$chatHistory.append(template(context));
 		scrollToBottom();
@@ -90,9 +93,9 @@ function insertData(userName, message) {
 			message: message,
 			time: getCurrentTime()
 		},
-		success: function(data) {
+		success: function (data) {
 		},
-		error: function(xhr) {
+		error: function (xhr) {
 			alert("error")
 		}
 

@@ -361,7 +361,7 @@ border-radius: 100px;
             <div class="right_content">
                 <div>
                     <div class="section__title">
-                        <p>Diễn đàn AgriGenius</p>
+                        <p>Diễn đàn AGRIADVISORs</p>
                         "Chia sẻ thông tin - Tạo niềm vui mới"
                     </div>
                     <p class="section__subtitle">

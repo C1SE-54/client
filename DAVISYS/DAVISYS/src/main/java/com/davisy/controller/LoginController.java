@@ -33,9 +33,10 @@ import com.davisy.service.CookieService;
 import com.davisy.service.ParamService;
 import com.davisy.service.SessionService;
 import com.google.gson.Gson;
+import org.springframework.web.context.annotation.RequestScope;
 
 
-
+@RequestScope
 @Controller
 public class LoginController {
 	@Autowired
@@ -224,8 +225,7 @@ public class LoginController {
 		return "jsp/main";
 
 	}
-	
-	
+
 	@GetMapping("/profile/{idUser}")
 	public String loadPostProfile(@PathVariable String idUser, Model model) {
 		System.out.println("IdUser: "+idUser);

@@ -6,15 +6,14 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.davisy.dto.CommentDTO;
+import com.davisy.request.CommentRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.davisy.dao.CommentDao;
 import com.davisy.dao.PostDao;
@@ -40,40 +39,33 @@ public class CommentController {
 	@Autowired
 	HttpServletRequest request;
 
-	@GetMapping("/PostComment/{idPost}")
-	public String comment(@PathVariable String idPost, @RequestParam("commentContent") String comment,
-			@RequestParam("repCommentIdUser") String replyComment,Model model) {
+	@PostMapping("/PostComment/{idPost}")
+	public ResponseEntity<?> comment(@PathVariable String idPost, @RequestBody CommentRequest commentRequest) {
 		User userSession = sessionService.get("user");
 		if(userSession == null) {
-			return "error";
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 		}
 		try {
 			int id = Integer.valueOf(idPost);
 			int idReply = 0;
-			User user = sessionService.get("user");
 			Post post = postDao.findByIdPost(id);
 			Comment cm = new Comment();
-			cm.setContent(comment);
+			cm.setContent(commentRequest.getCommentContent());
 			cm.setPost(post);
-			cm.setUser(user);
+			cm.setUser(userSession);
 			cm.setDateComment(day());
-			if ("".equals(replyComment)) {
-				cm.setCommentParent(null);
-			} else {
-				idReply = Integer.valueOf(replyComment);
-				Comment cmt = commentDao.findByIdComment(idReply);
-				cm.setCommentParent(cmt);
-
+			if (!commentRequest.getRepCommentIdUser().isEmpty()) {
+				idReply = Integer.valueOf(commentRequest.getRepCommentIdUser());
+				Comment parentComment = commentDao.findByIdComment(idReply);
+				cm.setCommentParent(parentComment);
 			}
-			commentDao.save(cm);
-			List<Comment> comments = commentDao.findAllByPostId(id);
-			int uniqueCommenters = countUniqueCommenters(comments);
-			model.addAttribute("uniqueUsers", uniqueCommenters);
-			System.out.println("Unique commenters: " + uniqueCommenters);
-			return "jsp/main";
+
+			Comment savedComment = commentDao.save(cm);
+//			// Return the newly created comment (it can be appended directly to the DOM)
+			CommentDTO commentDTO = new CommentDTO(savedComment);
+			return ResponseEntity.ok(commentDTO);
 		} catch (Exception e) {
-			System.out.println("error: " + e);
-			throw e;
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
 	}
 
@@ -86,7 +78,7 @@ public class CommentController {
 	}
 	@GetMapping("/loadReplyComment")
 	public void loadReplyComment(@RequestParam("idComment") String idComment) {
-		
+
 		try {
 			request.setCharacterEncoding("utf-8");
 			response.setCharacterEncoding("utf-8");

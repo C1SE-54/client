@@ -22,17 +22,18 @@
                         <div class="letter">G</div>
                         <div class="letter">R</div>
                         <div class="letter">I</div>
-                        <div class="letter">G</div>
-                        <div class="letter">E</div>
-                        <div class="letter">N</div>
+                        <div class="letter">A</div>
+                        <div class="letter">D</div>
+                        <div class="letter">V</div>
                         <div class="letter">I</div>
-                        <div class="letter">U</div>
                         <div class="letter">S</div>
+                        <div class="letter">O</div>
+                        <div class="letter">R</div>
                     </div>
                     Diễn đàn về cây trồng
                 </div>
                 <p class="section__subtitle">
-                    Chào mừng bạn đến với AgriGenius <br>
+                    Chào mừng bạn đến với AGRIADVISOR <br>
                     Nơi bạn có thể trao đổi thông tin về cây trồng miễn phí !!!
                 </p>
                 <div class="return">
