@@ -15,7 +15,7 @@
     <div class="container">
         <h2>Mã xác nhận</h2>
         <p>
-            AgriGenius đã gửi mã xác nhận đến email của bạn <br/>
+            AGRIADVISOR đã gửi mã xác nhận đến email của bạn <br/>
           Nhập mã dưới đây để xác nhận địa chỉ email của bạn
         </p>
     <fr:form action="/validate" method="POST" >

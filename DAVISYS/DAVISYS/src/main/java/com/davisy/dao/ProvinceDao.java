@@ -8,7 +8,8 @@ import java.util.List;
 public interface ProvinceDao extends JpaRepository<Province, Integer>{
 	@Query(value = "SELECT * FROM provinces WHERE code=:code", nativeQuery = true)
 	public Province findIdProvince(int code);
-
+	@Query(value = "select * from provinces",nativeQuery = true)
+	public List<Province> getAllProvince();
 	@Query(value = """
     SELECT m.month AS month, 
            COALESCE(COUNT(p.date_Post), 0) AS count

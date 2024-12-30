@@ -28,12 +28,13 @@
                             <div class="letter">G</div>
                             <div class="letter">R</div>
                             <div class="letter">I</div>
-                            <div class="letter">G</div>
-                            <div class="letter">E</div>
-                            <div class="letter">N</div>
+                            <div class="letter">A</div>
+                            <div class="letter">D</div>
+                            <div class="letter">V</div>
                             <div class="letter">I</div>
-                            <div class="letter">U</div>
                             <div class="letter">S</div>
+                            <div class="letter">O</div>
+                            <div class="letter">R</div>
                         </div>
                         <h1> Diễn đàn về cây trồng </h1>
                     </div>
@@ -50,7 +51,7 @@
     </header>
     <section class="introduce">
         <div class="section__container introduce__container">
-            <h2 class="section__title">Diễn đàn AgriGenius</h2>
+            <h2 class="section__title">Diễn đàn AGRIADVISOR</h2>
             <p class="section__subtitle">
                 Nơi mọi người có thể chia sẻ và trao đổi kiến thức về nông nghiệp. <br>
                 Mỗi câu hỏi hay bài viết đều mang theo những câu chuyện và kinh nghiệm quý báu, giúp kết nối cộng đồng nông dân và chuyên gia với nhau.
@@ -124,7 +125,7 @@
     <footer class="footer">
         <div class="section__container footer__container">
             <div class="footer__col">
-                <h3>AgriGenius<span>.</span></h3>
+                <h3>AGRIADVISOR<span>.</span></h3>
                 <p>
                     Diễn đàn Trao đổi thông tin về cây trồng
                 </p>

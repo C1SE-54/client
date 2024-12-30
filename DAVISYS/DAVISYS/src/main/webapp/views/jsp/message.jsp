@@ -9,30 +9,29 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 
-<!-- <link rel="stylesheet" href="views/css/message.css"> -->
-<!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-	<link rel='stylesheet'
-		href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'> -->
-<!-- <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
--->
+
 <link rel="stylesheet" href="/views/css/message.css">
 <script src="https://kit.fontawesome.com/152112956f.js"
 	crossorigin="anonymous"></script>
-<!-- <script src="views/js/jquery.min.js"></script>
- <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-</head> -->
+<style>
+	.countMessages {
+		display: inline-block;
+		background-color: #ff4d4f; /* Màu nền đỏ */
+		color: white;             /* Màu chữ trắng */
+		font-size: 12px;          /* Kích thước chữ */
+		font-weight: bold;        /* Chữ đậm */
+		border-radius: 50%;       /* Bo tròn */
+		width: 20px;              /* Chiều rộng */
+		height: 20px;             /* Chiều cao */
+		line-height: 20px;        /* Căn giữa theo chiều dọc */
+		text-align: center;       /* Căn giữa theo chiều ngang */
+		margin-left: 5px;         /* Khoảng cách với chữ */
+		position: relative;       /* Định vị */
+		top: -5px;                /* Điều chỉnh vị trí dọc */
+		right: -5px;              /* Điều chỉnh vị trí ngang */
+	}
+
+</style>
 <body>
 	<div class="main-blogs">
 		<div class="row chat-main">
@@ -68,6 +67,13 @@
 		</div>
 	</div>
 	<script src="views/js/dialog.js"></script>
+	<script src="views/js/chat.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			const userName = document.getElementById("userName").value;
+			registration(userName);
+		});
+	</script>
 	<script id="message-template" type="text/x-handlebars-template">
 					<div class="message text-only">
 						<div class="response">

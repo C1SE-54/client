@@ -31,6 +31,16 @@ public interface PostDao extends JpaRepository<Post, Integer> {
 
     @Modifying
     @Transactional
+    @Query("UPDATE Post p SET p.post = :postContent, p.product = :productName, p.hashTag = :hashtag, p.address_Product = :address, p.link_Image = :imageUrl WHERE p.ID = :postId")
+    public String updatePost(@Param("postContent") String postContent,
+                             @Param("productName") String productName,
+                             @Param("hashtag") String hashtag,
+                             @Param("address") String address,
+                             @Param("imageUrl") String imageUrl,
+                             @Param("postId") int postId);
+
+    @Modifying
+    @Transactional
     @Query("DELETE FROM User u WHERE u.ID = :id")
     public void deleteUserById(@Param("id") int id);
     @Query("select p from Post p order by p.ID desc ")

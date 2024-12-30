@@ -26,7 +26,7 @@
 								<label> <img src="${user.avatar}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
 									<input name="file" type="file" style="display: none;"> </label>
 								<h5 class="my-3">${user.fullname}</h5>
-								<p class="text-muted mb-4">13 bài viết</p>
+<%--								<p class="text-muted mb-4">13 bài viết</p>--%>
 							</div>
 						</div>
 					</div>

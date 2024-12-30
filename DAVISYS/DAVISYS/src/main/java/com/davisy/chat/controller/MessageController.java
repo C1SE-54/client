@@ -61,8 +61,10 @@ public class MessageController {
 
 	@MessageMapping("/chat/{to}")
 	public void sendMessage(@DestinationVariable String to, MessageModel message) {
-//		System.out.println("handling send message: " + message + " to: " + to);
+//		response.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html;charset=UTF-8");
 		boolean isExists = UserStorage.getInstance().getUsers().containsKey(to);
+		System.out.println(message);
 		if (isExists) {
 			simpMessagingTemplate.convertAndSend("/topic/messages/" + to, message);
 		}
@@ -72,8 +74,10 @@ public class MessageController {
 	public void createChats(@PathVariable String chatName, @RequestParam("fromLogin") String fromLogin,
 			@RequestParam("toUser") String toUser) {
 		try {
-			System.out.println("fromLogin: "+fromLogin);
-			System.out.println("toUser: "+toUser);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			System.out.println("fromLogin: " + fromLogin);
+			System.out.println("toUser: " + toUser);
 			User user1 = userDao.findByUsername(fromLogin);
 			User user2 = userDao.findByUsername(toUser);
 			if (chatsDao.findChatNames(fromLogin + toUser) == null
@@ -103,8 +107,7 @@ public class MessageController {
 								+ "							<p class=\"text\">" + String.valueOf(oj[1]) + "</p>\r\n"
 								+ "						</div>\r\n" + "					</div>\r\n"
 								+ "					<p class=\"response-time time\">" + String.valueOf(oj[2]) + "</p>";
-					} 
-					else {
+					} else {
 						outLine = "<div class=\"message\">\r\n" + "						<div class=\"photo\"\r\n"
 								+ "							style=\"background-image: url(" + String.valueOf(oj[4])
 								+ ");\">\r\n" + "							<div class=\"online\"></div>\r\n"
@@ -126,6 +129,8 @@ public class MessageController {
 			@RequestParam("userName") String userName, @RequestParam("message") String message,
 			@RequestParam("time") String time) {
 		try {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
 			Chats chats = chatsDao.findChatNames(checkNameChat(fromLogin, toUser));
 			User user = userDao.findByUsername(userName);
 			Messages messages = new Messages();
@@ -142,6 +147,8 @@ public class MessageController {
 	}
 
 	public String checkNameChat(String fromLogin, String toUser) {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String chatName = "";
 		if (chatsDao.findChatNames(fromLogin + toUser) == null) {
 			chatName = chatsDao.findChatNames(toUser + fromLogin).getName_chats();
