@@ -56,9 +56,9 @@
 
 </style>
 	<div class="sidebar">
-		<img src="/views/images/large.png" alt="" srcset="" class="logo">
+		<img src="/views/images/Screenshot 2024-12-31 100605.png" alt="" srcset="" class="logo">
 		<a class="logo-expand" href="#"> <img alt=""
-			src="/views/images/large.png" class="logo-expand-img">
+			src="/views/images/Screenshot 2024-12-31 100605.png" class="logo-expand-img">
 		</a>
 		<div class="side-wrapper">
 			<div class="side-title"></div>
@@ -67,16 +67,17 @@
 					class="fa-solid fa-house"></i> Trang chủ
 				</a> <a class="sidebar-link trending" href="/message"> <i
 					class="fa-solid fa-paper-plane"></i> Nhắn tin
-				</a> <a class="sidebar-link" href="#" data-toggle="modal"
-					data-target="#myModal"> <i class="fa-solid fa-heart"></i> Theo
-					dõi
-				</a> <a class="sidebar-link" href="/history"> <i
+				</a>
+<%--				<a class="sidebar-link" href="#" data-toggle="modal"--%>
+<%--					data-target="#myModal"> <i class="fa-solid fa-heart"></i> Theo--%>
+<%--					dõi--%>
+<%--				</a> --%>
+				<a class="sidebar-link" href="/history/${user.ID}"> <i
 					class="fa-solid fa-clock-rotate-left"></i>Nhật ký
 				</a> <a class="sidebar-link" href="/contact"> <i
 					class="fa-solid fa-envelope"></i></i>Liên hệ
 				</a>
-				</a> <a class="sidebar-link" href="http://127.0.0.1:5000"> <i
-					class="fa-solid fa-envelope"></i></i>Tìm sâu bệnh
+				</a> <a class="sidebar-link" href="http://127.0.0.1:5000"> <i class="fa-solid fa-magnifying-glass"></i></i>Tìm sâu bệnh
 			</a>
 			</div>
 		</div>
@@ -84,7 +85,13 @@
 			<div class="side-title">CÔNG CỤ</div>
 			<div class="side-menu">
 				<a class="sidebar-link" href="#" id="showButton_setting"> <i
-					class="fa-solid fa-gear"></i> Cài đặt
+					class="fa-solid fa-gear" hidden="hidden"></i>
+				</a><a class="sidebar-link" href="#" id="showButton_setting"> <i
+					class="fa-solid fa-gear" hidden="hidden"></i>
+				</a><a class="sidebar-link" href="#" id="showButton_setting"> <i
+					class="fa-solid fa-gear" hidden="hidden"></i>
+				</a><a class="sidebar-link" href="#" id="showButton_setting"> <i
+					class="fa-solid fa-gear" hidden="hidden"></i>
 				</a>
 				<c:if test="${sessionScope.user.user_Role==true}"> 
 				<a class="sidebar-link" href="/admin"> <i

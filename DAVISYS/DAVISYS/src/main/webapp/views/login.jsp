@@ -47,7 +47,7 @@
             <div class="login-card-container">
                 <div class="login-card">
                     <div class="login-card-logo">
-                 <img src="views/images/large.png" alt="logo">
+                 <img src="/views/images/Screenshot 2024-12-31 100605.png" alt="logo">
 
                     </div>
                     <div class="login-card-header">

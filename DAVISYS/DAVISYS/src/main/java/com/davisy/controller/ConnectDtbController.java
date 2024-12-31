@@ -48,15 +48,7 @@ public class ConnectDtbController {
 	@Autowired
 	ProvinceDao prdao;
 	@Autowired
-	SessionService sessionService;	
-//	@RequestMapping("/jsp/home")
-//	public String index(Model model) {
-//		Follower fl = new Follower();
-//		model.addAttribute("fl", fl);
-//		List<Follower> fls = fldao.findAll();
-//		model.addAttribute("fls", fls);
-//		return "jsp/home";
-//	}
+	SessionService sessionService;
 	
 	@RequestMapping("/jsp/conect")
 	public String index(Model model) {

@@ -30,29 +30,4 @@ public class ErrorControllerHandle implements ErrorController {
 		}
 		return "error404";
 	}
-
-//	public String getErrorPath() {
-//		return "error404";
-//	}
-	
-	/*
-	@RequestMapping("/error")
-    public String handleError(HttpServletRequest request) {
-        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-        System.out.println(status);
-        if(status != null) {
-            int statusCode = Integer.valueOf(status.toString());
-
-            if (statusCode == HttpStatus.FORBIDDEN.value()) {
-                return "errorpages/error-403";
-            } else if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                return "error404";
-            } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "errorpages/error-500";
-            }
-        }
-        System.out.println("k loi");
-        return "error404";
-    }
-	*/
 }

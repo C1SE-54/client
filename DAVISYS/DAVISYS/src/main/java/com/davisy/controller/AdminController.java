@@ -52,7 +52,7 @@ public class AdminController {
 			loadTotalUserMonth(model);
 			percentPostSend(model);
 			totalReportPostToday(model);
-//			totalPostAllMonth(model);
+			totalPostAllMonth(model);
 			top3Product(model);
 			returnString = "admin/home/index";
 		}else {
@@ -62,7 +62,16 @@ public class AdminController {
 		return returnString;
 		
 	}
-	
+	@GetMapping("/getTotalMonth")
+	public List<Integer> totalPostAllMonth(Model model) {
+		List<Object[]> listAllM = postDao.totalPostAllMonth();
+		List<Integer> listAll = new ArrayList<>();
+		for(Object[] oj: listAllM) {
+			listAll.add(Integer.valueOf(String.valueOf(oj[1])));
+			System.out.println("test+ "+ oj[1]);
+		}
+		return listAll;
+	}
 	@GetMapping("/admin/report")
 	public String adminpageReport(Model model) {
 		User userSession = sessionService.get("user");
@@ -86,30 +95,6 @@ public class AdminController {
 			return "error";
 		}
 	}
-//	@RequestMapping(value = "/admin/report/delete/{id}", method = RequestMethod.POST)
-//	public String deletePost(@PathVariable("id") Integer id, HttpServletRequest request) {
-//		try {
-//			// Xóa người dùng
-//			postDao.deleteUserById(id);
-//
-//			// Kiểm tra xem người dùng có đang đăng nhập không, nếu có thì logout
-//			if (request.getSession(false) != null) {
-//				request.getSession().invalidate();  // Hủy session hiện tại
-//				return "redirect:/login";  // Chuyển hướng về trang login
-//			}
-//
-//			return "redirect:/admin/report";  // Nếu không có session, chuyển hướng đến trang quản lý
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return "error";
-//		}
-//	}
-
-
-
-
-
-
 
 	@GetMapping("/admin/usermanage")
 	public String adminpageUserManage(Model model) {

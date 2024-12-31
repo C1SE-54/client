@@ -27,6 +27,95 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
 </head>
+<style>
+    /* CSS cho dropdown */
+    .dropdown {
+        margin-left: 20px;
+        position: relative;
+    }
+
+    /* Nút dropdown */
+    .dropdown-toggle {
+        background-color: #007bff; /* Màu nền xanh dương */
+        color: white; /* Màu chữ trắng */
+        border: none; /* Loại bỏ viền */
+        padding: 10px 20px; /* Khoảng cách bên trong nút */
+        font-size: 16px; /* Kích thước chữ */
+        border-radius: 5px; /* Bo góc cho nút */
+        cursor: pointer; /* Thêm con trỏ khi hover */
+        transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+    }
+
+    .dropdown-toggle:hover {
+        background-color: #0056b3; /* Màu nền khi hover */
+    }
+
+    /* CSS cho dropdown-menu */
+    .dropdown-menu {
+        position: absolute;
+        top: 100%; /* Đảm bảo menu hiện ra dưới nút */
+        left: 0;
+        right: 0;
+        background-color: #ffffff; /* Màu nền trắng cho menu */
+        border-radius: 5px; /* Bo góc cho menu */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Đổ bóng cho menu */
+        min-width: 200px; /* Chiều rộng tối thiểu của menu */
+        padding: 10px 0; /* Khoảng cách trong menu */
+        z-index: 999; /* Đảm bảo menu nằm trên các phần tử khác */
+        display: none; /* Ẩn menu mặc định */
+    }
+
+    /* Hiển thị menu khi mở dropdown */
+    .dropdown-menu.show {
+        display: block;
+    }
+
+    /* CSS cho các mục trong dropdown */
+    .dropdown-menu button {
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left; /* Căn lề trái cho chữ */
+        padding: 10px 20px; /* Khoảng cách bên trong các mục */
+        font-size: 14px; /* Kích thước chữ */
+        color: #007bff; /* Màu chữ */
+        cursor: pointer; /* Thêm con trỏ khi hover */
+        transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+    }
+
+    .dropdown-menu button:hover {
+        background-color: #f1f1f1; /* Màu nền khi hover */
+        color: #0056b3; /* Màu chữ khi hover */
+    }
+
+    /* CSS cho nút Xóa bài viết */
+    .delete-btn {
+        background: none;
+        border: none;
+        color: #dc3545; /* Màu đỏ cho nút xóa */
+        padding: 10px 20px;
+        font-size: 14px;
+        width: 100%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .delete-btn:hover {
+        background-color: #f8d7da; /* Màu nền đỏ nhạt khi hover */
+    }
+
+    /* Thêm hiệu ứng cho dropdown khi được mở */
+    .dropdown-toggle::after {
+        content: '\25BC'; /* Mũi tên xuống */
+        margin-left: 10px; /* Khoảng cách giữa chữ và mũi tên */
+    }
+
+    /* Điều chỉnh mũi tên khi dropdown đang mở */
+    .dropdown-toggle[aria-expanded="true"]::after {
+        content: '\25B2'; /* Mũi tên lên khi mở dropdown */
+    }
+
+</style>
 <body>
 <div class="video-detail">
     <div class="video-content">
@@ -53,7 +142,7 @@
                 <div class="profile-p-name">${ usersProfile.fullname }</div>
             </div>
             <div class="fl">
-                <p>4567 Người theo dõi</p>
+<%--                <p>4567 Người theo dõi</p>--%>
                 <!-- <p>4567 Đang theo dõi</p> -->
             </div>
         </div>
@@ -226,21 +315,52 @@
 
 
                             <!-- Nút 2: Xoa bài viết -->
-                            <a class="dropdown-item" href="#" onclick="confirmDelete(${posts.post.ID})">
-                                Xóa bài viết
-                            </a>
+                            <form action="/deletePost/${posts.post.ID}" method="post" id="deleteForm${posts.post.ID}">
+                                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                                <button type="button" class="delete-btn" onclick="showConfirmDelete(${posts.post.ID})">Xóa bài viết</button>
+                            </form>
                         </div>
                     </div>
 
                 </div>
             </div>
-
+            <div id="confirmDeleteModal${posts.post.ID}" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeConfirmDelete(${posts.post.ID})">&times;</span>
+                    <h3>Bạn có chắc chắn muốn xóa bài viết này?</h3>
+                    <button class="confirm-btn" onclick="confirmDelete(${posts.post.ID})">Xóa</button>
+                    <button class="cancel-btn" onclick="closeConfirmDelete(${posts.post.ID})">Hủy</button>
+                </div>
+            </div>
         </c:forEach>
+
     </div>
 </div>
 <script>
 
+    function showConfirmDelete(postId) {
+        console.log("Show confirm delete modal for postId: " + postId);
+        const modal = document.getElementById('confirmDeleteModal' + postId);
+        if (modal) {
+            modal.style.display = "block";
+        }
+    }
 
+    function closeConfirmDelete(postId) {
+        console.log("Close confirm delete modal for postId: " + postId);
+        const modal = document.getElementById('confirmDeleteModal' + postId);
+        if (modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function confirmDelete(postId) {
+        console.log("Confirm delete for postId: " + postId);
+        const form = document.getElementById('deleteForm' + postId);
+        if (form) {
+            form.submit();
+        }
+    }
 </script>
 <script src="/views/js/profile.js"></script>
 </body>

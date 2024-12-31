@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -179,27 +180,34 @@ public class LoginController {
 
 		return "login";
 	}
-	
+
 	@GetMapping("/main")
-	public String loadPost(@RequestParam(value = "keyword", required = false) String keyword,Model model) {
+	public String loadPost(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
 		User userSession = sessionService.get("user");
-		if(userSession == null) {
+		if (userSession == null) {
 			return "error";
 		}
 		try {
 			List<Post> posts;
-//			List<Post> posts = pdao.fillAllPost();
-			if (keyword != null && !keyword.isEmpty()){
+			if (keyword != null && !keyword.isEmpty()) {
 				posts = pdao.findByPostContent(keyword);
-				System.out.println();
-			}else {
+				System.out.println("Found posts with keyword: " + keyword);
+			} else {
 				posts = pdao.fillAllPost();
+				System.out.println("Found all posts.");
 			}
-//			List<Post> posts = pdao.findAll(Sort.by(Sort.Direction.DESC,"date_Post"));
+
+			// Kiểm tra nếu không có bài viết
+			if (posts == null || posts.isEmpty()) {
+				System.out.println("No posts found!");
+				throw new EntityNotFoundException("No posts found");
+			}
+
 			List<PostEntity> postEntity = new ArrayList<>();
 			List<Comment> comments = commentDao.findAll();
 			List<CommentEntity> commentEntity = new ArrayList<>();
 			int dem = 0;
+
 			for (Post p : posts) {
 				List<String> images = new ArrayList<>();
 				String image = p.getLink_Image();
@@ -208,6 +216,7 @@ public class LoginController {
 				}
 				postEntity.add(new PostEntity(p, images));
 			}
+
 			for (Comment cm : comments) {
 				if (cm.getCommentParent() == null) {
 					dem = commentDao.findAllByIdComment(cm.getID()).size();
@@ -215,16 +224,19 @@ public class LoginController {
 				commentEntity.add(new CommentEntity(cm, dem));
 				dem = 0;
 			}
+
 			model.addAttribute("posts", postEntity);
 			model.addAttribute("comments", commentEntity);
 			model.addAttribute("keyword", keyword);
-			System.out.println("cmt: "+commentEntity.size());
+			System.out.println("cmt: " + commentEntity.size());
 		} catch (Exception e) {
 			System.out.println("Error loadPost: " + e);
+			// Thêm xử lý lỗi nếu cần, ví dụ hiển thị thông báo
+			model.addAttribute("errorMessage", "Không tìm thấy bài viết.");
 		}
 		return "jsp/main";
-
 	}
+
 
 	@GetMapping("/profile/{idUser}")
 	public String loadPostProfile(@PathVariable String idUser, Model model) {

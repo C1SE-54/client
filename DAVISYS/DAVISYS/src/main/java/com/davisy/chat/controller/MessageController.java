@@ -61,8 +61,6 @@ public class MessageController {
 
 	@MessageMapping("/chat/{to}")
 	public void sendMessage(@DestinationVariable String to, MessageModel message) {
-//		response.setCharacterEncoding("UTF-8");
-//		response.setContentType("text/html;charset=UTF-8");
 		boolean isExists = UserStorage.getInstance().getUsers().containsKey(to);
 		System.out.println(message);
 		if (isExists) {

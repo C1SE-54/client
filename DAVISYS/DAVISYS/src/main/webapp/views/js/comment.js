@@ -40,7 +40,12 @@ function repComment(idComment, userName, idPost) {
 function appendCommentToPost(idPost, newComment) {
 	let commentList = document.getElementById('first-comment'); // Assuming you have a container to hold the comments
 	let commentElement = document.createElement('div');
-
+	console.log(newComment)
+	console.log(newComment.avatar)
+	console.log(newComment.id)
+	console.log(newComment.postName)
+	console.log(newComment.dateComment)
+	console.log(newComment.content)
 	commentElement.classList.add('comment__card');
 	commentElement.innerHTML = `
         <div class="box-top">
@@ -49,14 +54,14 @@ function appendCommentToPost(idPost, newComment) {
                     <img src="${newComment.avatar}" id="imgUserComment">
                 </div>
                 <div class="Name">
-                    <strong>${newComment.fullname}</strong>
+                    <strong>${newComment.postName}</strong>
                     <span>${newComment.dateComment}</span>
                 </div>
             </div>
         </div>
         <p>${newComment.content}</p>
         <div class="comment__card-footer">
-            <div onclick="repComment('${newComment.ID}', '${newComment.fullname}', '${idPost}')">Reply</div>
+            <div onclick="repComment('${newComment.id}', '${newComment.postName}', '${idPost}')">Reply</div>
         </div>
     `;
 

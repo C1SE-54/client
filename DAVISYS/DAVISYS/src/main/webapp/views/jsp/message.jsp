@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Nhắn tin</title>
 
 
 <link rel="stylesheet" href="/views/css/message.css">
@@ -30,6 +30,12 @@
 		top: -5px;                /* Điều chỉnh vị trí dọc */
 		right: -5px;              /* Điều chỉnh vị trí ngang */
 	}
+		.text {
+			max-width: 300px; /* Giới hạn chiều rộng tối đa */
+			word-wrap: break-word; /* Cho phép ngắt dòng khi nội dung quá dài */
+			overflow-wrap: break-word; /* Hỗ trợ thêm cho ngắt dòng */
+			white-space: normal; /* Hiển thị nhiều dòng thay vì một dòng */
+		}
 
 </style>
 <body>
@@ -53,8 +59,8 @@
 					<div id="selectedUserImageId"></div>
 					<div id="selectedUserId"></div>
 				</div>
-				<div class="messages-chat"></div>
-				<div class="footer-chat">
+				<div class="messages-chat" style="height: 100%"></div>
+				<div class="footer-chat" style="margin-bottom: 0">
 					<input type="file" id="image-input" accept="image/*" style="font-size: 25pt; display: none;" onchange="previewImage(event)">
 					<label for="image-input" style="font-size: 25pt; cursor: pointer;">
 						<i class="fa fa-image" aria-hidden="true"></i>

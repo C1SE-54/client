@@ -9,9 +9,5 @@ public class MainController {
 	String main() {
 		return "jsp/main";
 	}
-	
-//	@RequestMapping("/main")
-//	String main2() {
-//		return "jsp/main";
-//	}
+
 }

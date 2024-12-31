@@ -28,6 +28,8 @@ public class Messages implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
+
+	@Column(columnDefinition = "NVARCHAR(MAX)")
 	String content;
 	String send_Time;
 

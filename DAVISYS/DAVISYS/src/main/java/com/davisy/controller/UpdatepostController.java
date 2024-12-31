@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.davisy.dao.ProvinceDao;
 import com.davisy.dao.UserDao;
+import com.davisy.entity.Comment;
 import com.davisy.entity.Province;
 import com.davisy.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import com.davisy.dao.PostDao;
 import com.davisy.entity.Post;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -124,6 +126,26 @@ public class UpdatepostController {
 
 		return "redirect:/profile/" + userSession.getID();
 	}
+	@RequestMapping(value = "/deletePost/{postId}", method = RequestMethod.POST)
+	public String deletePost(@PathVariable("postId") int id, RedirectAttributes redirectAttributes) {
+		Post post = postDao.findByIdPost(id);
+		if (post != null) {
+			// Xóa các bản ghi liên quan trong bảng INTERESTED trước
+			postDao.deleteInterestedByPostId(id);
+			// Xóa bài viết trong bảng POST
+			postDao.deletePostById(id);
+
+			redirectAttributes.addFlashAttribute("message", "Xóa bài viết thành công!");
+		} else {
+			redirectAttributes.addFlashAttribute("message", "Không tìm thấy bài viết!");
+		}
+
+		return "redirect:/profile/" + post.getUser().getID();
+	}
+
+
+
+
 
 
 }

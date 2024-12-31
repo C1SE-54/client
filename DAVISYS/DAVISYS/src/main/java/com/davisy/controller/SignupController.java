@@ -12,6 +12,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import com.davisy.dao.ProvinceDao;
+import com.davisy.entity.Province;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,9 +49,10 @@ public class SignupController {
 
 	@Autowired
 	SessionService sessionService;
-
+	@Autowired
+	ProvinceDao provinceDao;
 	User acc = new User();
-
+	Province province = new Province();
 	private String maxacnhan = "";
 	
 	
@@ -121,7 +124,9 @@ public class SignupController {
 					acc.setProvince(null);
 					acc.setAvatar("views/images/user/user.jpg");
 					acc.setMark(0);
-					acc.setUser_Status(false);
+					acc.setProvince(province);
+//					acc.setProvince(province);
+					acc.setUser_Status(true);
 					acc.setUser_Role(false);
 					acc.setBan(false);
 

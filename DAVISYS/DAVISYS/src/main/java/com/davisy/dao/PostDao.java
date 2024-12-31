@@ -26,8 +26,17 @@ public interface PostDao extends JpaRepository<Post, Integer> {
 
     @Modifying
     @Transactional
+    @Query("DELETE FROM Interested i WHERE i.post.ID = :id")
+    public void deleteInterestedByPostId(@Param("id") int postId);
+
+
+
+    @Modifying
+    @Transactional
     @Query("DELETE FROM Post p WHERE p.ID = :id")
-    public void deletePostById(@Param("id") int id);
+    public void deletePostById(@Param("id") int postId);
+
+
 
     @Modifying
     @Transactional
@@ -69,7 +78,8 @@ public interface PostDao extends JpaRepository<Post, Integer> {
 
     @Query(value = "SELECT TOP 3 POST.PRODUCT, COUNT(*) AS AMOUNT FROM POST GROUP BY POST.PRODUCT ORDER BY AMOUNT DESC", nativeQuery = true)
     public List<Object[]> top3Product();
-
+//    @Query(value = "SELECT * FROM post ORDER BY date_Post DESC LIMIT :limit", nativeQuery = true)
+//    List<Post> findLatestPosts(@Param("limit") int limit);
 
 
 }

@@ -91,8 +91,8 @@
         <textarea class="form-control" id="postContent" name="postContent" rows="5">${updatepost.post}</textarea>
     </div>
     <div class="mb-3">
-        <label for="productName" class="form-label">Tên sản phẩm</label>
-        <input class="form-control" id="productName" name="productName" value="${updatepost.product}" placeholder="Tên sản phẩm" required
+        <label for="productName" class="form-label">Tên cây trồng</label>
+        <input class="form-control" id="productName" name="productName" value="${updatepost.product}" placeholder="Tên cây trồng" required
                type="text">
     </div>
     <div class="mb-3">
